@@ -2,8 +2,8 @@
   <div>
     <LikeHeader></LikeHeader>
     <h2>{{ number }}</h2>
-    <LikeNumber :number="number"></LikeNumber>
-    <LikeNumber :number="number"></LikeNumber>
+    <LikeNumber :total-number="number" v-on:my-click="number = $event"></LikeNumber>
+    <LikeNumber :total-number="number"></LikeNumber>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import LikeHeader from "./components/LikeHeader"
 export default {
   data() {
     return {
-      number: 10
+      number: 14
     };
   },
   components: {
