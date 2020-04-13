@@ -4,22 +4,10 @@ import LikeNumber from "./components/LikeNumber";
 
 Vue.config.productionTip = false;
 Vue.component('LikeNumber', LikeNumber); //グローバル登録
-Vue.directive("border", {
-  bind(el, binding, vnode) {
-    //ディレクティブが初めて対象の要素に紐づいたとき
-  },
-  inserted() {
-    //親Nodeに挿入された時
-  },
-  update() {
-    //コンポーネントが更新される度。子コンポーネントが更新される前
-  },
-  componentUpdated() {
-    //コンポーネントが更新される度。子コンポーネントが更新された後
-  },
-  unbind() {
-    //ディレクティブが紐づいている要素から取り除かれた時
-  }
+Vue.directive("border", function(el, binding) {
+  el.style.border = "solid black 2px";
+  el.style.borderWidth = binding.value.width; //binding.valueでテンプレから動的にデータを受け取れる
+  el.style.borderColor = binding.value.color;
 });
 
 new Vue({

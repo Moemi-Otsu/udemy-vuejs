@@ -1,12 +1,13 @@
 <template>
   <div>
-    <LikeHeader v->
-      <h3>初めまして</h3>
+    <LikeHeader>
+        <p>{{slotProps}}</p>
+        <h2>みなさん</h2>
+        <h3>初めまして</h3>
+        <p>よろしくお願いします</p>
+      <template #[title]></template>
     </LikeHeader>
-    <LikeNumber
-      :total-number="number"
-      @my-click="incrementNumber"
-    ></LikeNumber>
+    <LikeNumber :total-number="number" @my-click="incrementNumber"></LikeNumber>
   </div>
 </template>
 
@@ -16,7 +17,8 @@ import LikeHeader from "./components/LikeHeader"
 export default {
   data() {
     return {
-      number: 14
+      number: 14,
+      title: "title"
     };
   },
   components: {
