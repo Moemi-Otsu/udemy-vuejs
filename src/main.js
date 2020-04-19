@@ -1,18 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import LikeNumber from "./components/LikeNumber";
 
 Vue.config.productionTip = false;
-Vue.component('LikeNumber', LikeNumber);
-Vue.filter("upperCase", function(value) {
-  console.log("フィルタ");
-  return value.toUpperCase();
-});
-Vue.mixin({
-  created() {
-    console.log("Global mixin");
-  }
-});
 
 new Vue({
   render: h => h(App),
