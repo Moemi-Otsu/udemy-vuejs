@@ -4,6 +4,26 @@
     <button @click="myAnimation = 'fade'">Fade</button>
     <p>{{ myAnimation }}</p>
     <button @click="show = !show">切り替え</button>
+    <br><br>
+    <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+    >
+      <div class="circle" v-if="show"></div>
+    </transition>
+    <br>
+    <button @click="myComponent = 'ComponentA'">ComponentA</button>
+    <button @click="myComponent = 'ComponentB'">ComponentB</button>
+    <transition name="fade" mode="out-in">
+      <component :is="myComponent"></component>
+    </transition>
     <transition
       name="fade"
       mode="out-in"
@@ -28,17 +48,60 @@
 </template>
 
 <script>
+import ComponentA from "./components/ComponentA.vue";
+import ComponentB from "./components/ComponentB.vue";
+
 export default {
+  components: {
+    ComponentA,
+    ComponentB
+  },
   data() {
     return {
       show: true,
-      myAnimation: 'slide'
+      myAnimation: 'slide',
+      myComponent: "ComponentA"
     };
+  },
+  methods: {
+    beforeEnter(el) {
+      // 現れる前
+      el.style.width = "100px";
+    },
+    enter(el, done) {
+      // 現れる時
+    },
+    afterEnter(el) {
+      // 現れた後
+    },
+    enterCancelled(el) {
+      // 現れるアニメーションがキャンセルされた時
+    },
+    beforeLeave(el) {
+      // 消える前
+    },
+    leave(el, done) {
+      // 消えるとき
+    },
+    afterLeave(el) {
+      // 消えた後
+    },
+    leaveCancelled(el) {
+      // 現れるアニメーションがキャンセルされた時
+    }
   }
 };
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  border-radius: 100px;
+  background-color: deeppink;
+}
+
 .fade-enter {
   opacity: 0;
 }
