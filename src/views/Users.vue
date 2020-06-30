@@ -10,11 +10,6 @@
 
 <script>
 export default {
-  watch: {
-    $route(to, from) {
-      console.log(to);
-      console.log(from);
-    }
-  }
+  props: ["id"]
 }
 </script>
