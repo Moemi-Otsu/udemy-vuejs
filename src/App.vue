@@ -14,9 +14,19 @@
         class="link"
       >Users</router-link>
     </nav>
+    <Home></Home>
     <router-view></router-view>
   </div>
 </template>
+
+<script>
+  import Home from "./views/Home.vue"
+  export default {
+    components: {
+      Home
+    }
+  }
+</script>
 
 <style scoped>
   .link {
